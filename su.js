@@ -42,20 +42,10 @@ function getUSTjoblisitng() {
                 //console.log(value.ID);
                 //console.log( value["Position Type"]);
                 //console.log( value["Department/Unit"])
-                console.log(positionType);
+                console.log(value["Campus : Location"]);
               
 
-            //passing the value to store in the particular array.
-                if(!location.includes(value['Campus : Location'])){
-                    location.push(value['Campus : Location'])
-                }
-                if(!department.includes(value["Department/Unit"] )){
-                    department.push(value["Department/Unit"] )
-                }
-                if(!positionType.includes( value["Position Type"])){
-                    positionType.push( value["Position Type"])
-                }
-
+          
               
 
                 $('#Job').append(
@@ -69,6 +59,15 @@ function getUSTjoblisitng() {
                     
                 )
 
+
+                $('#loc').append( '<a href="#">'+value['Campus : Location']+ '</a>'
+                )
+
+                $('#pt').append('<a href="#">'+value["Position Title"]+ '</a>'
+                )
+
+                $('#dep').append('<a href="#">'+value["Department/Unit"]+ '</a>'
+                )
             });
 
         }

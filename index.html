@@ -1,3 +1,5 @@
+
+    
 <!--The content below is only a placeholder and can be replaced.-->
 <html>
     <head>
@@ -15,7 +17,6 @@
         <!-- Connecting javascript files -->
         <script type="text/javascript" src="./su.js"></script>
         <style>
-
           body{
                     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
               }
@@ -24,7 +25,6 @@
                         margin-right: 100px;
                         margin-left: 100px;
                    }
-
             button {
                   
                         padding: 10px 24px;
@@ -47,7 +47,6 @@
                     background-color: #8348ad;
                     color: white;
               }
-
               form.searchbutton {
                                     font-family: Arial;
                                 }
@@ -84,7 +83,6 @@
                 clear: both;
                 display: table;
               }
-
               a {
                 font-size: 20px;
               }
@@ -96,53 +94,51 @@
                 padding: 10px;
                 margin: 1px;
               }
- 
-              .dropbtn {
+ /* button and dropdown */
+            .dropbtn {
                 background-color: #8348ad;
                 color: white;
                 padding: 16px;
                 font-size: 16px;
                 border: none;
                 cursor: pointer;
-              }
-              
-              .dropdown {
+            }
+            
+            .dropdown {
                 position: relative;
                 display: inline-block;
-               
-              }
-              
-              .dropdown-content {
+            }
+            
+            .dropdown-content {
                 display: none;
-                position: absolute;
-                background-color: white;
-                color: black;
+                position: auto; /* absolute,fixed */
+                background-color: #f9f9f9;
                 min-width: 160px;
-                box-shadow: 0px 8px 16px 1px rgba(0,0,0,0.2);
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
-               
-              }
-              
-              .dropdown-content a {
+            }
+            
+            .dropdown-content a {
                 color: black;
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
-              }
-              
-              .dropdown-content a:hover {
-                  background-color: #c345d3;
-                  color: white;
-              }
-              
-              .dropdown:hover .dropdown-content {
+            }
+            
+            .dropdown-content a:hover {background-color: #de98e7}
+            
+            .dropdown:hover .dropdown-content {
                 display: block;
-                  cursor: pointer;
+            }
+            
+            .dropdown:hover .dropbtn {
+                background-color: #c345d3;;
+                cursor: pointer;
               }
               
-              .dropdown:hover .dropbtn {background-color: #de98e7;  
-              }
+              /* button and dropdown */
 
+              /* container table ans scroll*/
               #style{
                 overflow: auto;
                 height: 200px;
@@ -155,7 +151,6 @@
                 border-bottom: 5px solid #eee;
                 box-shadow: inset 0 1px 10px rgba(0, 0, 0, .3);
               }
-
         </style>
         
     </head>
