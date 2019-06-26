@@ -43,10 +43,6 @@ function getUSTjoblisitng() {
                 //console.log( value["Position Type"]);
                 //console.log( value["Department/Unit"])
                 console.log(value["Campus : Location"]);
-              
-
-          
-              
 
                 $('#Job').append(
                     '<div id=style>'+ 
@@ -58,18 +54,19 @@ function getUSTjoblisitng() {
                     '</div>'+'<br>'
                     
                 )
+                
 
+                    $('#loc').append( '<a href="#">'+value['Campus : Location']+ '</a>'
+                    )
 
-                $('#loc').append( '<a href="#">'+value['Campus : Location']+ '</a>'
-                )
+                    $('#pt').append('<a href="#">'+value["Position Title"]+ '</a>'
+                    )
 
-                $('#pt').append('<a href="#">'+value["Position Title"]+ '</a>'
-                )
-
-                $('#dep').append('<a href="#">'+value["Department/Unit"]+ '</a>'
-                )
+                    $('#dep').append('<a href="#">'+value["Department/Unit"]+ '</a>'
+                    )
+                
             });
-
+        
         }
 
     })
