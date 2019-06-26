@@ -4,7 +4,7 @@ $(document).ready(function () {
     console.log("Here We Go");
 
     getUSTjoblisitng();
-    
+    getshowdata();
 
 }); 
 
@@ -54,19 +54,18 @@ function getUSTjoblisitng() {
                     '</div>'+'<br>'
                     
                 )
-                
+                    
 
-                    $('#loc').append( '<a href="#">'+value['Campus : Location']+ '</a>'
-                    )
+                $('#loc').append( '<a href="#">'+value['Campus : Location']+ '</a>'
+                )
 
-                    $('#pt').append('<a href="#">'+value["Position Title"]+ '</a>'
-                    )
+                $('#pt').append('<a href="#">'+value["Position Title"]+ '</a>'
+                )
 
-                    $('#dep').append('<a href="#">'+value["Department/Unit"]+ '</a>'
-                    )
-                
+                $('#dep').append('<a href="#">'+value["Department/Unit"]+ '</a>'
+                )
             });
-        
+
         }
 
     })
