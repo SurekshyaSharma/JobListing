@@ -43,10 +43,6 @@
                             transform: translateY(-10px);
                           }
               
-              .btn {
-                    background-color: #8348ad;
-                    color: white;
-              }
               form.searchbutton {
                                     font-family: Arial;
                                 }
@@ -88,49 +84,52 @@
               }
              
  /* button and dropdown */
-            .dropbtn {
+              .dropbtn {
                 background-color: #8348ad;
                 color: white;
                 padding: 16px;
-                font-size: 20px;
+                font-size: 16px;
                 border: none;
                 cursor: pointer;
-            }
-            
-            .dropdown {
+              }
+
+              .dropbtn:hover, .dropbtn:focus {
+                background-color: #c345d3;
+              }
+              
+              .dropdown {
                 position: relative;
                 display: inline-block;
-            }
-            
-            .dropdown-content {
-                display: none;
-                position: absolute; /* auto,absolute,fixed */
-                background-color: #ffffff;
-                min-width: 160px;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                z-index: 1;
                 
-            }
+              }
+
+            .dropdown-content {
+                      display: none;
+                      position: absolute;
+                      background-color: #ffffff;
+                      min-width: 160px;
+                      overflow: auto;
+                      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                      z-index: 1;
+                    }
             
-            .dropdown-content a {
+              .dropdown-content a {
                 color: black;
                 padding: 12px 100px;
+                text-decoration: none;
                 display: block;
                 font-size: 15px;
-                text-align: left;
-            }
+              }
+                    
             
-            .dropdown-content a:hover {background-color: #de98e7}
+                .dropdown a:hover {background-color: #de98e7;}
             
             .dropdown:hover .dropdown-content {
                 display: block;
                 cursor: pointer;
             }
             
-            .dropdown:hover .dropbtn {
-                background-color: #c345d3;;
-                cursor: pointer;
-              }
+            
               
               /* button and dropdown */
 
@@ -157,11 +156,19 @@
         <h1>UST Job Listing</h1>
             <div id= container>
 
-                    <div id=Job align=center style="padding:15px 15px 2500px;">
+                    <div id=Job align=center id=style>
                             <form class="searchbutton" >
                                 <input type="text" placeholder="Search by job type, location or department" name="search">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
+
+                            <div class="dropdown">
+                                <button class="dropbtn">All Jobs</button>
+                                  
+                                        <div id=type class="dropdown-content">    
+                                        </div>
+                                 
+                            </div>
                         
                             <div class="dropdown">
                                 <button class="dropbtn">Location</button>
@@ -173,18 +180,15 @@
                                 
                             <div class="dropdown">
                                 <button class="dropbtn">Level</button>
-                                    <div class="dropdown-content">
-                                        <div id =pt>
-                                        </div> 
+                                    <div id =pt class="dropdown-content">
+                                        
                                     </div>
                             </div>
                                 
                             <div class="dropdown">
                                 <button class="dropbtn">Department</button>
-                                    <div class="dropdown-content"> 
-                                        <div id= dep>
-                                        </div>
-                                    </div>
+                                    <div id= dep class="dropdown-content"> 
+                                    
                                     </div>
                             </div>
                     </div>
