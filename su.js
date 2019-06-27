@@ -44,10 +44,6 @@ function getUSTjoblisitng() {
                 //console.log( value["Department/Unit"])
                 console.log(value["Campus : Location"]);
               
-
-          
-              
-
                 $('#Job').append(
                     '<div id=style>'+ 
                     '<a href=" '+value['Job URL (Linked)']+'")">'+value["Position Title"]+'</a>'+
@@ -58,8 +54,7 @@ function getUSTjoblisitng() {
                     '</div>'+'<br>'
                     
                 )
-
-
+                
                 $('#loc').append( '<a href="#">'+value['Campus : Location']+ '</a>'
                 )
 
