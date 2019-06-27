@@ -84,16 +84,9 @@
                 display: table;
               }
               a {
-                font-size: 20px;
+                font-size: 25px;
               }
-              
-              div {
-                background-color: white;
-                width: auto;
-                border: 1px;
-                padding: 10px;
-                margin: 1px;
-              }
+             
  /* button and dropdown */
             .dropbtn {
                 background-color: #8348ad;
@@ -116,19 +109,22 @@
                 min-width: 160px;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
+                
             }
             
             .dropdown-content a {
                 color: black;
-                padding: 12px 16px;
-                text-decoration: none;
+                padding: 12px 100px;
                 display: block;
+                font-size: 15px;
+                text-align: left;
             }
             
             .dropdown-content a:hover {background-color: #de98e7}
             
             .dropdown:hover .dropdown-content {
                 display: block;
+                cursor: pointer;
             }
             
             .dropdown:hover .dropbtn {
@@ -151,9 +147,7 @@
                 border-bottom: 5px solid #eee;
                 box-shadow: inset 0 1px 10px rgba(0, 0, 0, .3);
               }
-              #loc{
-                font-size: 10px;
-              }
+             
         </style>
         
     </head>
@@ -171,10 +165,10 @@
                         
                             <div class="dropdown">
                                 <button class="dropbtn">Location</button>
-                                    <div class="dropdown-content">
-                                        <div id=loc>    
+                                  
+                                        <div id=loc class="dropdown-content">    
                                         </div>
-                                    </div>
+                                 
                             </div>
                                 
                             <div class="dropdown">

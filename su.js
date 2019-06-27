@@ -4,7 +4,7 @@ $(document).ready(function () {
     console.log("Here We Go");
 
     getUSTjoblisitng();
-    getshowdata();
+   
 
 }); 
 
@@ -33,17 +33,31 @@ function getUSTjoblisitng() {
             var ref_location= loc;
             var ref_department=dep;
             var ref_jobType=pt;
-
-
+        
             console.log(jsonformat)
+
+            
+            $.each(jsonformat, function (index, value){
+                if (!positionType.includes(value['Employment Type'])){
+                    positionType.push(value['Employment Type']);
+                }
+                if (!department.includes(value['Department/Unit'])){
+                    department.push(value['Department/Unit']);
+                }
+                if (!location.includes(value['Campus : Location'])){
+                    location.push(value['Campus : Location']);
+                }
+            }); 
+
+            
             $.each(jsonformat, function(key, value){
 
                 //object literal
                 //console.log(value.ID);
                 //console.log( value["Position Type"]);
-                //console.log( value["Department/Unit"])
-                console.log(value["Campus : Location"]);
 
+           //showing the data of array
+              
                 $('#Job').append(
                     '<div id=style>'+ 
                     '<a href=" '+value['Job URL (Linked)']+'")">'+value["Position Title"]+'</a>'+
@@ -51,21 +65,24 @@ function getUSTjoblisitng() {
                     '<div>'+'<button>'+value["Department/Unit"]+'</button>' +'</div>'+
                     '<div>'+'<button>'+value["Position Type"] +'</button>'+'</div>'+ 
                     '<div>'+'<button>'+'<br>'+value["Closing Date"]+'</button>'+'</div>'+
-                    '</div>'+'<br>'
-                    
-                )
-                    
+                    '</div>'+'<br>'  
+                ) 
 
-                $('#loc').append( '<a href="#">'+value['Campus : Location']+ '</a>'
-                )
-
-                $('#pt').append('<a href="#">'+value["Position Title"]+ '</a>'
-                )
-
-                $('#dep').append('<a href="#">'+value["Department/Unit"]+ '</a>'
-                )
             });
+             console.log(location);
+            // console.log(department);
+            // console.log(positionType);
 
+            $.each(location, function (key, value){
+                //console.log(value);
+                $('#loc').append('<a id="myDropdown href="locat">'+value+'</a>')
+            });
+            $.each(department, function (key, value){
+                $('#dep').append('<a id="myDropdown href="depert">'+value+'</a>')
+            });
+            $.each(positionType, function (key, value){
+                $('#pt').append('<a id="myDropdown href="depert">'+value+'</a>')
+            });
         }
 
     })
