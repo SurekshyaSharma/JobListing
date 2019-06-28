@@ -131,10 +131,7 @@ function getfilter(){
                 
  
             }); 
-            
-            fill_filter(positionTypes, ref_jobType);
-            fill_filter(department, ref_department);
-            fill_filter(location, ref_location);
+
         }
     });
 }
