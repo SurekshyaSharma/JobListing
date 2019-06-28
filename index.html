@@ -13,6 +13,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.3/jquery.csv.min.js"></script>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- Connecting javascript files -->
         <script type="text/javascript" src="./su.js"></script>
@@ -115,10 +116,12 @@
             
               .dropdown-content a {
                 color: black;
-                padding: 12px 100px;
+                width: 300px;
+                padding: 12px 10px;
                 text-decoration: none;
                 display: block;
                 font-size: 15px;
+                text-align: left;
               }
                     
             
@@ -147,6 +150,9 @@
                 box-shadow: inset 0 1px 10px rgba(0, 0, 0, .3);
               }
              
+              #arrow{
+                  cursor:auto;
+              }
         </style>
         
     </head>
@@ -155,15 +161,29 @@
 
         <h1>UST Job Listing</h1>
             <div id= container>
+                    <select id = "dope">
+                            <option value = "#FFFFFF">None</option>
+                          
+                    </select>
+                    <select id = "1">
+                            <option value = "#FFFFFF">None</option>
+                          
+                    </select>
+                    <select id = "2">
+                            <option value = "#FFFFFF">None</option>
+                          
+                    </select>
+                
+                
 
                     <div id=Job align=center id=style>
                             <form class="searchbutton" >
                                 <input type="text" placeholder="Search by job type, location or department" name="search">
-                                <button type="submit"><i class="fa fa-search"></i></button>
+                                <button onclick=" getsearchfilter()" type="submit"><i class="fa fa-search"></i></button>
                             </form>
 
                             <div class="dropdown">
-                                <button class="dropbtn">All Jobs</button>
+                                <button class="dropbtn">All Jobs <i class="fa fa-caret-down"></i> </button>
                                   
                                         <div id=title class="dropdown-content">    
                                         </div>
@@ -171,7 +191,7 @@
                             </div>
                         
                             <div class="dropdown">
-                                <button class="dropbtn">Location</button>
+                                <button class="dropbtn">Location <i class="fa fa-caret-down"></i> </button>
                                   
                                         <div id=loc class="dropdown-content">    
                                         </div>
@@ -179,14 +199,14 @@
                             </div>
                                 
                             <div class="dropdown">
-                                <button class="dropbtn">Level</button>
+                                <button class="dropbtn">Level <i class="fa fa-caret-down"></i> </button>
                                     <div id =pt class="dropdown-content">
                                         
                                     </div>
                             </div>
                                 
                             <div class="dropdown">
-                                <button class="dropbtn">Department</button>
+                                <button class="dropbtn">Department <i class="fa fa-caret-down"></i> </button>
                                     <div id= dep class="dropdown-content"> 
                                     
                                     </div>
