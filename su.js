@@ -104,8 +104,8 @@ function getUSTjoblisitng() {
                 //appending in the button
 
                 $.each(job, function (key, value){
-                    // $('#title').append('<a href="' + value['Job URL (Linked)'] + '" target="_blank">'  + value +'</a>')
-                    $('#title').append( '<option value = "#FFFFFF">'+value+'</option>')
+                     $('#title').append('<a href="' + value['Job URL (Linked)'] + '" target="_blank">'  + value +'</a>')
+                    
                     
                     console.log(value['Job URL (Linked)']); 
                 });
