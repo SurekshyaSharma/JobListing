@@ -182,10 +182,10 @@ function getsearchfilter( filters, ref_filter){
                 
  
             }); 
-            searchfilter(positionType, ref_jobType); 
-            searchfilter(department, ref_department); 
-            searchfilter(location, ref_location); 
-            searchfilter(job, ref_titlejob); 
+            // searchfilter(positionType, ref_jobType); 
+            // searchfilter(department, ref_department); 
+            // searchfilter(location, ref_location); 
+            // searchfilter(job, ref_titlejob); 
          
             
         }
