@@ -96,20 +96,20 @@ function getUSTjoblisitng() {
 
 //appending in the dropdown button************************************************************************************************************************************************
                  //console.log(job);
-                $.each(job, function (key, value){
-                     $('#title').append('<a href="' + value['Job URL (Linked)'] + '" target="_blank">'  + value +'</a>')
-                });
-                $.each(location, function (key, value){
-                    //console.log(value);
-                    $('#loc').append('<a  id=arrow>'+value+'</a>')
-                });
+                // $.each(job, function (key, value){
+                //      $('#title').append('<a href="' + value['Job URL (Linked)'] + '" target="_blank">'  + value +'</a>')
+                // });
+                // $.each(location, function (key, value){
+                //     //console.log(value);
+                //     $('#loc').append('<a  id=arrow>'+value+'</a>')
+                // });
                
-                $.each(department, function (key, value){
-                    $('#dep').append('<a id=arrow>'+value+'</a>')
-                });
-                $.each(positionType, function (key, value){
-                    $('#pt').append('<a id=arrow>'+value+'</a>')
-                });
+                // $.each(department, function (key, value){
+                //     $('#dep').append('<a id=arrow>'+value+'</a>')
+                // });
+                // $.each(positionType, function (key, value){
+                //     $('#pt').append('<a id=arrow>'+value+'</a>')
+                // });
 //practice************************************************************************************************************************************************************************
                 $.each(d, function (key, value){
                     //console.log(value);
@@ -188,10 +188,25 @@ function getsearchfilter(){
                 if (!ddjoptype.includes(value["Position Title"])){
                     ddjoptype.push(value["Position Title"]);
                 }
-                
- 
+/*****************************************search bar*******************************************/
+               
             }); 
             
         }
     });
+
+    jsonformat.filter(function(index, value){
+        $('#Job').empty();
+
+        var typeJob = document.getElementById("dope").value;
+        var depJob = document.getElementById("1").value;
+        var locJob = document.getElementById("2").value;
+    });
+    var filtersConsidered = new Array();
+    console.log(typeJob);
+    
+    $.each(filterConsidered, function (index, value){
+        
+    });
+    
 }

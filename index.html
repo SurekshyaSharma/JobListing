@@ -26,6 +26,7 @@
                         margin-right: 100px;
                         margin-left: 100px;
                    }
+/*************************************button*************************************************************/
             button {
                   
                         padding: 10px 24px;
@@ -43,7 +44,7 @@
                             box-shadow: 0px 15px 20px 	rgb(100, 42, 106);
                             transform: translateY(-10px);
                           }
-              
+    /*****************************search button****************************************************************/
               form.searchbutton {
                                     font-family: Arial;
                                 }
@@ -84,7 +85,7 @@
                 font-size: 25px;
               }
              
- /* button and dropdown */
+ /* ***********************************************dropdown button**********************************************/
               .dropbtn {
                 background-color: #8348ad;
                 color: white;
@@ -134,7 +135,7 @@
             
             
               
-              /* button and dropdown */
+/***********************************************dropdown button********************************** */
 
               /* container table ans scroll*/
               #style{
@@ -153,6 +154,7 @@
               #arrow{
                   cursor:auto;
               } 
+/***************************************droptdown*************************************************************************/
               select{
                   width:318;
                   margin-bottom:20px;
@@ -165,34 +167,35 @@
 
         <h1>UST Job Listing</h1>
             <div id= container>
-                <div>
+                <div id =searchbar>
                     <select id = "dope">
-                            <option value = "#FFFFFF">None</option>
+                            <option value = "#FFFFFF">Location</option>
                           
                     </select>
                     <select id = "1">
-                            <option value = "#FFFFFF">None</option>
+                            <option value = "#FFFFFF">Department</option>
                           
                     </select>
                     <select id = "2">
-                            <option value = "#FFFFFF">None</option>
+                            <option value = "#FFFFFF">Postion Title</option>
                           
                     </select>
                   
-                            <button  type="submit"><i class="fa fa-search">Search</i></button>
+                            <button  type="submit"><i class="fa fa-search"></i></button>
                             <button onclick="clearfilter()" id="clear">Clear</button>
                 
                 </div>
 
-                    <div id=Job align=center >
-                            <form class="searchbutton" >
-                                <input type="text" placeholder="Search by job type, location or department" name="search">
-                                <button onclick="searchfilter()">Search</button>
-                               
-                            </form>
+                <form class="searchbutton" >
+                    <input type="text" placeholder="Search by job type, location or department" name="search">
+                    <button onclick="searchfilter()">Search</button>
+                   
+                </form>
 
+                    <div id=Job align=center class="clicktop">
+                            
                             <div class="dropdown">
-                                <button class="dropbtn">All Jobs <i class="fa fa-caret-down"></i> </button>
+                                <!-- <button class="dropbtn">All Jobs <i class="fa fa-caret-down"></i> </button> -->
                                   
                                         <div id=title class="dropdown-content">    
                                         </div>
@@ -200,7 +203,7 @@
                             </div>
                         
                             <div class="dropdown">
-                                <button class="dropbtn">Location <i class="fa fa-caret-down"></i> </button>
+                                <!-- <button class="dropbtn">Location <i class="fa fa-caret-down"></i> </button> -->
                                
                                         <div id=loc class="dropdown-content">    
                                         </div>
@@ -208,14 +211,14 @@
                             </div>
                                 
                             <div class="dropdown">
-                                <button class="dropbtn">Level <i class="fa fa-caret-down"></i> </button>
+                                <!-- <button class="dropbtn">Level <i class="fa fa-caret-down"></i> </button> -->
                                     <div id =pt class="dropdown-content">
                                         
                                     </div>
                             </div>
                                 
                             <div class="dropdown">
-                                <button class="dropbtn">Department <i class="fa fa-caret-down"></i> </button>
+                                <!-- <button class="dropbtn">Department <i class="fa fa-caret-down"></i> </button> -->
                                     <div id= dep class="dropdown-content"> 
                                     
                                     </div>
