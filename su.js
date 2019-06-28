@@ -4,7 +4,7 @@ $(document).ready(function () {
     console.log("Here We Go");
 
     getUSTjoblisitng();
-    getsearchfilter();
+    //getsearchfilter();
  
 }); 
 
@@ -59,7 +59,7 @@ function getUSTjoblisitng() {
                 if (!job.includes(value["Position Title"])){
                     job.push(value["Position Title"]);
                 }
-                //practice appending in the top dropdown
+/*practice appending in the top dropdown********************************************************************************/
                 if (!d.includes(value['Campus : Location'])){
                     d.push(value['Campus : Location']);
                 }
@@ -78,10 +78,9 @@ function getUSTjoblisitng() {
             //console.log(value.ID);
             //console.log( value["Job URL (Linked)"]);
  
-            //apending inside the job directory
+            //appending inside the job directory
                 $('#Job').append(
                     '<div id=style>'+ 
-                    '<ul>' +
                     '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
                     '<h4>' + value['Position Title'] + '</h4>'+'</a>'+
                     '<div>'+'<button>'+ value['Campus : Location'] +'</button>'+'</div>'+
@@ -96,20 +95,20 @@ function getUSTjoblisitng() {
 
 //appending in the dropdown button************************************************************************************************************************************************
                  //console.log(job);
-                $.each(job, function (key, value){
-                     $('#title').append('<a href="' + value['Job URL (Linked)'] + '" target="_blank">'  + value +'</a>')
-                });
-                $.each(location, function (key, value){
-                    //console.log(value);
-                    $('#loc').append('<a  id=arrow>'+value+'</a>')
-                });
+                // $.each(job, function (key, value){
+                //      $('#title').append('<a href="' + value['Job URL (Linked)'] + '" target="_blank">'  + value +'</a>')
+                // });
+                // $.each(location, function (key, value){
+                //     //console.log(value);
+                //     $('#loc').append('<a  id=arrow>'+value+'</a>')
+                // });
                
-                $.each(department, function (key, value){
-                    $('#dep').append('<a id=arrow>'+value+'</a>')
-                });
-                $.each(positionType, function (key, value){
-                    $('#pt').append('<a id=arrow>'+value+'</a>')
-                });
+                // $.each(department, function (key, value){
+                //     $('#dep').append('<a id=arrow>'+value+'</a>')
+                // });
+                // $.each(positionType, function (key, value){
+                //     $('#pt').append('<a id=arrow>'+value+'</a>')
+                // });
 //practice************************************************************************************************************************************************************************
                 $.each(d, function (key, value){
                     //console.log(value);
