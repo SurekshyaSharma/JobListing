@@ -154,7 +154,7 @@
                   cursor:auto;
               } 
               select{
-                  width:318;
+                  width:280;
                   margin-bottom:20px;
               }
         </style>                             
@@ -165,34 +165,34 @@
 
         <h1>UST Job Listing</h1>
             <div id= container>
-                <div>
+                <div id= search>
                     <select id = "dope">
-                            <option value = "#FFFFFF">None</option>
+                            <option>Location</option>
                           
                     </select>
-                    <select id = "1">
-                            <option value = "#FFFFFF">None</option>
-                          
-                    </select>
+
                     <select id = "2">
-                            <option value = "#FFFFFF">None</option>
+                      <option>Employment</option>
+                    
+                   </select>
+
+                    <select id = "1">
+                            <option>Department</option>
                           
                     </select>
                   
-                            <button  type="submit"><i class="fa fa-search">Search</i></button>
-                            <button onclick="clearfilter()" id="clear">Clear</button>
+                  
+                            <button onclick=dropdown() id=dropdownInput type="submit"><i class="fa fa-search">Search</i></button>
+                            <button onclick="clearFilter()" id="clear">Clear</button>
                 
                 </div>
 
                     <div id=Job align=center >
                             <form class="searchbutton" >
-                                <input type="text" placeholder="Search by job type, location or department" name="search">
-                                <button onclick="searchfilter()">Search</button>
-                               
-                            </form>
-
+                                <input type="text" id="searchInput" placeholder="Search by job type, location or department" name="search">
+                                <button onclick="searchFilter()".return false;>Search</button>
                             <div class="dropdown">
-                                <button class="dropbtn">All Jobs <i class="fa fa-caret-down"></i> </button>
+                                <!-- <button class="dropbtn">All Jobs <i class="fa fa-caret-down"></i> </button> -->
                                   
                                         <div id=title class="dropdown-content">    
                                         </div>
@@ -200,7 +200,7 @@
                             </div>
                         
                             <div class="dropdown">
-                                <button class="dropbtn">Location <i class="fa fa-caret-down"></i> </button>
+                                <!-- <button class="dropbtn">Location <i class="fa fa-caret-down"></i> </button> -->
                                
                                         <div id=loc class="dropdown-content">    
                                         </div>
@@ -208,14 +208,14 @@
                             </div>
                                 
                             <div class="dropdown">
-                                <button class="dropbtn">Level <i class="fa fa-caret-down"></i> </button>
+                                <!-- <button class="dropbtn">Level <i class="fa fa-caret-down"></i> </button> -->
                                     <div id =pt class="dropdown-content">
                                         
                                     </div>
                             </div>
                                 
                             <div class="dropdown">
-                                <button class="dropbtn">Department <i class="fa fa-caret-down"></i> </button>
+                                <!-- <button class="dropbtn">Department <i class="fa fa-caret-down"></i> </button> -->
                                     <div id= dep class="dropdown-content"> 
                                     
                                     </div>
