@@ -23,8 +23,8 @@
               }
            #container{
                         margin-top: 10px;
-                        margin-right: 100px;
-                        margin-left: 100px;
+                        margin-right: 50px;
+                        margin-left: 50px;
                    }
             button {
                   
@@ -139,8 +139,8 @@
               /* container table ans scroll*/
               #style{
                 overflow: auto;
-                height: 200px;
-                width: 100%; 
+                height: auto;
+                width: auto; 
                 margin: 0 auto;
                 margin-top: 10px;
                 padding: 0 20px 0 20px;
@@ -186,11 +186,13 @@
                             <button onclick="clearFilter()" id="clear">Clear</button>
                 
                 </div>
+                      <form class="searchbutton" >
+                            <input type="text" id="searchInput" placeholder="Search by job type, location or department" name="search">
+                            <button onclick="searchFilter();return false;">Search</button>
+                      </form>
 
                     <div id=Job align=center >
-                            <form class="searchbutton" >
-                                <input type="text" id="searchInput" placeholder="Search by job type, location or department" name="search">
-                                <button onclick="searchFilter()".return false;>Search</button>
+                           
                             <div class="dropdown">
                                 <!-- <button class="dropbtn">All Jobs <i class="fa fa-caret-down"></i> </button> -->
                                   

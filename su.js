@@ -67,15 +67,15 @@ function getUSTjoblisitng() {
                 $('#Job').append(
                     '<div id=style>'+ '<ul>'+
                     '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
-                    '<h4>'    + value['Position Title'] + '</h4>'+'</a>'+
-                    '<button>'+ value['Campus : Location'] +'</button>'+
-                    '<button>'+ value["Department/Unit"] +'</button>' +
-                    '<button>'+ value["Position Type"] +'</button>'+ 
-                    '<button>'+ value["Closing Date"] +'</button>' +
-                    '<button>'+ value['Campus : Location'] +'</button>'+
-                    '<button>'+'No of Opening:'+" "+ value['# of Openings'] +'</button>'+
-                    '<button>'+ value['FLSA Status'] +'</button>'+
-                    '<button>'+'ID:'+' '+ value['ID'] +'</button>'+
+                    '<h4>'    + value['Position Title'] + '</h4>'+'</a>'+"  "+
+                    '<button>'+ value['Campus : Location'] +'</button>'+"  "+
+                    '<button>'+ value["Department/Unit"] +'</button>' +"  "+
+                    '<button>'+ value["Position Type"] +'</button>'+ "  "+
+                    '<button>'+ value["Closing Date"] +'</button>' +"  "+
+                    '<button>'+ value['Campus : Location'] +'</button>'+"  "+
+                    '<button>'+'No of Opening:'+" "+ value['# of Openings'] +'</button>'+"  "+
+                    '<button>'+ value['FLSA Status'] +'</button>'+"  "+
+                    '<button>'+'ID:'+' '+ value['ID'] +'</button>'+"  "+
                     '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
 
                 ) 
@@ -107,9 +107,12 @@ function getUSTjoblisitng() {
 }
 /***********************************************************************************************/
 function searchFilter(){
+
     var csvfile = '/jobsample.csv';
     var jsonformat;
    
+    $('#Job').empty();
+
     console.log("(ajax-call)Starting from filter function.........");
 //converting the csv file into json data
     $.ajax({
@@ -125,48 +128,48 @@ function searchFilter(){
        
         success: function(data){
             jsonformat = $.csv.toObjects(data);
-            var searchResult= new Array();
+        
             var text = document.getElementById("searchInput").value;
             filter = text.toUpperCase();
          
             console.log(text);
-            //$('#Job').empty();
 
             $.each(jsonformat, function (index, value){
                 match = 0;
-                $.each(value, function (index, value){
-                    
-                    if(text== value){
+                $.each(value, function (i, j){
+                    //console.log(j);
+                    if(j.includes(text)){
                         match = 1;
                     }
                 
-                    if (match ==1){
-                        $('#Job').append(
-                            '<div id=style>'+ '<ul>'+
-                            '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
-                            '<h4>'    + value['Position Title'] + '</h4>'+'</a>'+
-                            '<button>'+ value['Campus : Location'] +'</button>'+
-                            '<button>'+ value["Department/Unit"] +'</button>' +
-                            '<button>'+ value["Position Type"] +'</button>'+ 
-                            '<button>'+ value["Closing Date"] +'</button>' +
-                            '<button>'+ value['Campus : Location'] +'</button>'+
-                            '<button>'+'No of Opening:'+" "+ value['# of Openings'] +'</button>'+
-                            '<button>'+ value['FLSA Status'] +'</button>'+
-                            '<button>'+'ID:'+' '+ value['ID'] +'</button>'+
-                            '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
-        
-                        ) 
-                    }
-                    else{
-                        $('#Job').append(
-                            '<div id=style>'+ 'Try Again!!'+'</div>'
-                        )
-                    }
-
             
                 });
 
-            
+                if (match ==1){
+                    //console.log(value['Position Title']);
+
+                    $('#Job').append(
+                        '<div>'+ '<ul>'+
+                        '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
+                        '<h4>'    + value['Position Title'] + '</h4>'+'</a>'+
+                        '<button>'+ value['Campus : Location'] +'</button>'+"  "+
+                        '<button>'+ value["Department/Unit"] +'</button>' +"  "+
+                        '<button>'+ value["Position Type"] +'</button>'+ "  "+
+                        '<button>'+ value["Closing Date"] +'</button>' +"  "+
+                        '<button>'+ value['Campus : Location'] +'</button>'+"  "+
+                        '<button>'+'No of Opening:'+" "+ value['# of Openings'] +'</button>'+"  "+
+                        '<button>'+ value['FLSA Status'] +'</button>'+"  "+
+                        '<button>'+'ID:'+' '+ value['ID'] +'</button>'+"  "+
+                        '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
+    
+                    ) 
+                }
+                else{
+                    $('#Job').append(
+                  
+                    )
+                }
+
             });
             
         }
