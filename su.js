@@ -252,56 +252,49 @@ function dropdown(){
                 var filterResult = new Array();
 
                 $.each(filterConsidered, function (i, j){
+                    match=0;
                     if (j == ""){
-                        filtersConsidered.delete(k);
+                        filterConsidered.delete(k);
                     }
                 });
 
                  
                 $.each(jsonformat, function (index, value){
-                    //   match =1;
-                    //     $.each(value, function (i, j){
-                    //         if(j.includes(loc_input)){
-                    //             match += 1;
-                    //         }
-                            
-                    //     }); 
+                    $.each(filterConsidered, function(i,j){
+                        if(value[i] == v){
+                            match++;
+                        }
+                        if(match == filterConsidered.size){
+                            filterResult.push(value);
+                        }
+                    });
+                    
+                   
 
-                    // $.each(value, function (i, j){
-                     
-                    //     if(j.includes(dep_input)){
-                    //         match += 1;
-                    //     }
-                          
-                    // }); 
-
-                    // $.each(value, function (i, j){
-                     
-                    //     if(j.includes(emp_input)){
-                    //         match += 1;
-                    //     }
-                          
-                    // }); 
-
-                    // if (match ==3){
-                    //     //console.log(value['Department/Unit']
+                    if (filterResult.length !=0){
+                        //console.log(value['Department/Unit']
         
-                    //     $('#Job').append(
-                    //         '<div>'+ '<ul>'+
-                    //         '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
-                    //         '<h4>'    + value['Position Title'] + '</h4>'+'</a>'+
-                    //         '<button>'+ value['Campus : Location'] +'</button>'+"  "+
-                    //         '<button>'+ value["Department/Unit"] +'</button>' +"  "+
-                    //         '<button>'+ value["Position Type"] +'</button>'+ "  "+
-                    //         '<button>'+ value["Closing Date"] +'</button>' +"  "+
-                    //         '<button>'+ value['Campus : Location'] +'</button>'+"  "+
-                    //         '<button>'+'No of Opening:'+" "+ value['# of Openings'] +'</button>'+"  "+
-                    //         '<button>'+ value['FLSA Status'] +'</button>'+"  "+
-                    //         '<button>'+'ID:'+' '+ value['ID'] +'</button>'+"  "+
-                    //         '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
+                        $('#Job').append(
+                            '<div>'+ '<ul>'+
+                            '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
+                            '<h4>'    + value['Position Title'] + '</h4>'+'</a>'+
+                            '<button>'+ value['Campus : Location'] +'</button>'+"  "+
+                            '<button>'+ value["Department/Unit"] +'</button>' +"  "+
+                            '<button>'+ value["Position Type"] +'</button>'+ "  "+
+                            '<button>'+ value["Closing Date"] +'</button>' +"  "+
+                            '<button>'+ value['Campus : Location'] +'</button>'+"  "+
+                            '<button>'+'No of Opening:'+" "+ value['# of Openings'] +'</button>'+"  "+
+                            '<button>'+ value['FLSA Status'] +'</button>'+"  "+
+                            '<button>'+'ID:'+' '+ value['ID'] +'</button>'+"  "+
+                            '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
         
-                    //     ) 
-                    // }
+                        ) 
+                    }
+                    else{
+                        $('#Job').append(
+                            '<div'+ 'Try Again'+'</div>'
+                        )
+                    }
                     
 
             });  
