@@ -11,7 +11,7 @@ $(document).ready(function () {
 }); 
 
 function getUSTjoblisitng() {
-    var csvfile = '/jobsample.csv';
+    var csvfile = './jobsample.csv';
     var jsonformat;
     //console.log("(ajax-call)Starting.........");
 //converting the csv file into json format
