@@ -11,10 +11,10 @@ $(document).ready(function () {
 }); 
 
 function getUSTjoblisitng() {
-    var csvfile = './jobsample.csv';
+    var csvfile = '/jobsample.csv';
     var jsonformat;
     //console.log("(ajax-call)Starting.........");
-//converting the csv file into json format
+   //converting the csv file into json format
     $.ajax({
         type: "GET",
         url: csvfile,
@@ -50,15 +50,7 @@ function getUSTjoblisitng() {
             console.log(jsonformat)
             
             $.each(jsonformat, function (index, value){
-                // if (!positionType.includes(value['Employment Type'])){
-                //     positionType.push(value['Employment Type']);
-                // }
-                // if (!department.includes(value['Department/Unit'])){
-                //     department.push(value['Department/Unit']);
-                // }
-                // if (!location.includes(value['Campus : Location'])){
-                //     location.push(value['Campus : Location']);
-                // }
+               
                 if (!job.includes(value["Position Title"])){
                     job.push(value["Position Title"]);
                 }
@@ -75,12 +67,10 @@ function getUSTjoblisitng() {
             }); 
 
             $.each(jsonformat, function(key, value){
-
-            //object literal
-            //console.log(value.ID);
-            //console.log( value["Job URL (Linked)"]);
- 
-            //appending inside the job directory
+                //object literal
+                //console.log(value.ID);
+                //console.log( value["Job URL (Linked)"]);
+    
                 $('#Job').append(
                     '<div id=style>'+ '<ul>'+
                     '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
@@ -95,28 +85,18 @@ function getUSTjoblisitng() {
                     '<button>'+'ID:'+' '+ value['ID'] +'</button>'+"  "+
                     '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
 
-                ) 
-
-                });
+                )
+                //there is URl append if there is not URl create a new url and show
+                if (value['Job URL (Linked)'] !== '') {
+                    $('#title').append('<a href="' + value['Job URL (Linked)'] + '" target="_blank">'  + value['Position Title'] +'</a>')
+                } else {
+                    let id = value['ID'].split('-').pop()
+                    $('#title').append(`<a href="https://studentemployment-stthomas.icims.com/jobs/${id}/job" target="_blank">${value['Position Title']}</a>`)
+                }
+            });
 
                
 
-//appending in the dropdown button************************************************************************************************************************************************
-                 //console.log(job);
-                $.each(job, function (key, value){
-                     $('#title').append('<a href="' + value['Job URL (Linked)'] + '" target="_blank">'  + value +'</a>')
-                });
-                // $.each(location, function (key, value){
-                //     //console.log(value);
-                //     $('#loc').append('<a  id=arrow>'+value+'</a>')
-                // });
-               
-                // $.each(department, function (key, value){
-                //     $('#dep').append('<a id=arrow>'+value+'</a>')
-                // });
-                // $.each(positionType, function (key, value){
-                //     $('#pt').append('<a id=arrow>'+value+'</a>')
-                // });
 
     /*appending in the top dropdown********************************************************************************/
               
@@ -161,7 +141,7 @@ function searchFilter(){
             jsonformat = $.csv.toObjects(data);
         
             var text = document.getElementById("searchInput").value;
-            text.toUpperCase();
+            // var cap= text.toUpperCase();
          
             console.log(text);
 
@@ -268,8 +248,7 @@ function dropdown(){
                             filterResult.push(value);
                         }
                     });
-                    
-                   
+        
 
                     if (filterResult.length !=0){
                         //console.log(value['Department/Unit']
