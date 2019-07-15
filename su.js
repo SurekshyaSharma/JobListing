@@ -6,15 +6,13 @@ $(document).ready(function () {
     getUSTjoblisitng();
     searchFilter();
     dropdown();
-    //clearFilter();
  
 }); 
 
 function getUSTjoblisitng() {
     var csvfile = '/jobsample.csv';
     var jsonformat;
-    //console.log("(ajax-call)Starting.........");
-   //converting the csv file into json format
+   
     $.ajax({
         type: "GET",
         url: csvfile,
@@ -27,18 +25,12 @@ function getUSTjoblisitng() {
         
         success: function(data){
             jsonformat = $.csv.toObjects(data);
+            //console.log("(ajax-call)Starting.........");
+            //converting the csv file into json format
 
-            // var location=  new Array();     
-            // var department=  new Array();  
-            // var positionType=  new Array();  
-             var job = new Array(); 
-            
-            // var ref_location= loc;
-            // var ref_department=dep;
-            // var ref_jobType=pt;
-             var ref_titlejob=title;
-//practice*********************************************************************************************************************************************************************************
-        
+            var job = new Array(); 
+            var ref_titlejob=title;
+
             var d = new Array(); 
             var ddepp = new Array();
             var ddjoptype = new Array(); 
@@ -86,6 +78,7 @@ function getUSTjoblisitng() {
                     '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
 
                 )
+
                 //there is URl append if there is not URl create a new url and show
                 if (value['Job URL (Linked)'] !== '') {
                     $('#title').append('<a href="' + value['Job URL (Linked)'] + '" target="_blank">'  + value['Position Title'] +'</a>')
@@ -95,10 +88,7 @@ function getUSTjoblisitng() {
                 }
             });
 
-               
-
-
-    /*appending in the top dropdown********************************************************************************/
+    /*appending in the top dropdown****************************************************************************************************************************************/
               
                 $.each(d, function (key, value){
                     //console.log(value);
@@ -123,9 +113,7 @@ function searchFilter(){
     var jsonformat;
    
     $('#Job').empty();
-
-    //console.log("(ajax-call)Starting from filter function.........");
-//converting the csv file into json data
+    
     $.ajax({
         type: "GET",
         url: csvfile,
@@ -141,18 +129,17 @@ function searchFilter(){
             jsonformat = $.csv.toObjects(data);
         
             var text = document.getElementById("searchInput").value;
-            // var cap= text.toUpperCase();
-         
-            console.log(text);
+            var userInput = text.toLowerCase();
+            
 
             $.each(jsonformat, function (index, value){
+                var valueLowercase =  value['Position Title'].toLowerCase();
                 match = 0;
-                $.each(value, function (i, j){
-                    //console.log(j);
-                    if(j.includes(text)){
-                        match = 1;
-                    }
-                });
+                
+                if(valueLowercase.includes(userInput)){
+                    match = 1;
+                    
+                }
 
                 if (match ==1){
                     //console.log(value['Position Title']);
@@ -237,7 +224,6 @@ function dropdown(){
                         filterConsidered.delete(k);
                     }
                 });
-
                  
                 $.each(jsonformat, function (index, value){
                     $.each(filterConsidered, function(i,j){
@@ -274,8 +260,6 @@ function dropdown(){
                             '<div'+ 'Try Again'+'</div>'
                         )
                     }
-                    
-
             });  
 
                 } 
@@ -285,8 +269,6 @@ function dropdown(){
 
 function clearFilter(){
    
-    //console.log("(ajax-call)Starting..clear filter.......");
-       //converting the csv file into json format
         $.ajax({
             type: "GET",
             url: '/jobsample.csv',
@@ -310,3 +292,4 @@ function clearFilter(){
             }
         });
 }
+
