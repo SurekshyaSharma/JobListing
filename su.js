@@ -35,9 +35,9 @@ function getUSTjoblisitng() {
             var ddepp = new Array();
             var ddjoptype = new Array(); 
 
-            var ref_loci= dope;
-            var ref_depi= 1;
-            var ref_typi= 2;
+            var ref_loci= location;
+            var ref_depi= department;
+            var ref_typi= employmentType;
 
             console.log(jsonformat)
             
@@ -92,15 +92,15 @@ function getUSTjoblisitng() {
               
                 $.each(d, function (key, value){
                     //console.log(value);
-                    $('#dope').append( '<option>'+value+'</option>')
+                    $('#location').append( '<option>'+value+'</option>')
                 })
                 $.each(ddepp, function (key, value){
                     //console.log(value);
-                    $('#1').append( '<option>'+value+'</option>')
+                    $('#department').append( '<option>'+value+'</option>')
                 })
                 $.each(ddjoptype, function (key, value){
                     //console.log(value);
-                    $('#2').append( '<option>'+value+'</option>')
+                    $('#employmentType').append( '<option>'+value+'</option>')
                 })  
         }
     })
@@ -142,7 +142,6 @@ function searchFilter(){
                 }
 
                 if (match ==1){
-                    //console.log(value['Position Title']);
 
                     $('#Job').append(
                         '<div>'+ '<ul>'+
@@ -168,15 +167,11 @@ function searchFilter(){
     
 }       
 
-/*****************************************************************************************************/
 function dropdown(){
 
         var csvfile = '/jobsample.csv';
         var jsonformat;
-        $('#Job').empty();
-
-        console.log("(ajax-call)Starting..dropdown.......");
-       //converting the csv file into json format
+    
         $.ajax({
             type: "GET",
             url: csvfile,
@@ -187,88 +182,58 @@ function dropdown(){
                 console.log("Failed ajax call" , error);
             },
             
-            
-            success: function(data){
-
-                var d = new Array(); 
-                var ddepp = new Array();
-                var ddjoptype = new Array(); 
-    
-                var ref_loci= dope;
-                var ref_depi= 1;
-                var ref_typi= 2;
-
-                var loc_input = document.getElementById('dope').value;
-                var emp_input = document.getElementById('2').value;
-                var dep_input = document.getElementById('1').value;
+            success: function(data){ 
         
-                // console.log(loc_input);
-                // console.log(emp_input);
-                // console.log(dep_input);
+                    jsonformat = $.csv.toObjects(data);
 
-                jsonformat = $.csv.toObjects(data);
+                    var ref_loci= location;
+                    var ref_depi= department;
+                    var ref_typi= employmentType;
 
-                var filterConsidered = new Map(
-                    [
-                        ["Employment Type", loc_input], 
-                        ["Department/Unit", emp_input], 
-                        ["Campus : Location", dep_input]
-                    ]
-                    
-                );
-                var filterResult = new Array();
+                    var loc_input = document.getElementById('location').value;
+                    var emp_input = document.getElementById('department').value;
+                    var dep_input = document.getElementById('employmentType').value;
+                    //console.log(loc_input);
 
-                $.each(filterConsidered, function (i, j){
-                    match=0;
-                    if (j == ""){
-                        filterConsidered.delete(k);
-                    }
-                });
-                 
-                $.each(jsonformat, function (index, value){
-                    $.each(filterConsidered, function(i,j){
-                        if(value[i] == v){
-                            match++;
-                        }
-                        if(match == filterConsidered.size){
-                            filterResult.push(value);
-                        }
-                    });
-        
+                    $.each(jsonformat, function (index, value){
+                        $('#job').empty();
 
-                    if (filterResult.length !=0){
-                        //console.log(value['Department/Unit']
-        
-                        $('#Job').append(
-                            '<div>'+ '<ul>'+
-                            '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
-                            '<h4>'    + value['Position Title'] + '</h4>'+'</a>'+
-                            '<button>'+ value['Campus : Location'] +'</button>'+"  "+
-                            '<button>'+ value["Department/Unit"] +'</button>' +"  "+
-                            '<button>'+ value["Position Type"] +'</button>'+ "  "+
-                            '<button>'+ value["Closing Date"] +'</button>' +"  "+
-                            '<button>'+ value['Campus : Location'] +'</button>'+"  "+
-                            '<button>'+'No of Opening:'+" "+ value['# of Openings'] +'</button>'+"  "+
-                            '<button>'+ value['FLSA Status'] +'</button>'+"  "+
-                            '<button>'+'ID:'+' '+ value['ID'] +'</button>'+"  "+
-                            '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
-        
-                        ) 
-                    }
-                    else{
-                        $('#Job').append(
-                            '<div'+ 'Try Again'+'</div>'
-                        )
-                    }
-            });  
+                         var filterConsidered = new Map(
+                        [
+                            ["Employment Type", loc_input], 
+                            ["Department/Unit", emp_input], 
+                            ["Campus : Location", dep_input]
+                        ]
+                        
+                        );
+                        //console.log(filterConsidered);
 
-                } 
+                        var filterresults = new Array(); 
+                        $.each(filterConsidered, function (idx, val){
+                            if(val == ""){
+                                filterConsidered.delete(idx);
+                            }
+                      
+                        }); 
+
+                        $.each(filterConsidered, function (idx, val){
+                            match = 0;
+                            if(idx == val ){
+                                match++;
+                            }
+                            if (match == filtersConsidered.size) { 
+                                filterresults.push(val); 
+                            } 
+                        });
+                            //console.log(val);
+
+                    });  
+            } 
         });
-    
 }     
 
 function clearFilter(){
-   
+    
         $.ajax({
             type: "GET",
             url: '/jobsample.csv',
@@ -284,9 +249,9 @@ function clearFilter(){
             jsonformat = $.csv.toObjects(data);
             
                 $('#Job').empty();
-                $('#dope').val("");
-                $('#1').val("");
-                $('#2').val("");
+                $('#location').val("");
+                $('#department').val("");
+                $('#employementType').val("");
                 getUSTjoblisitng(jsonformat);
 
             }
