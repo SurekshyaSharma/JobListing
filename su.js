@@ -39,7 +39,7 @@ function getUSTjoblisitng() {
             var ref_depi= department;
             var ref_typi= employmentType;
 
-            console.log(jsonformat)
+            //console.log(jsonformat)
             
             $.each(jsonformat, function (index, value){
                
@@ -168,7 +168,7 @@ function searchFilter(){
 }       
 
 function dropdown(){
-
+    $('#job').empty();
         var csvfile = '/jobsample.csv';
         var jsonformat;
     
@@ -202,58 +202,25 @@ function dropdown(){
                         ]
                         
                         );
+                    var filterresults = new Array(); 
+                  
                         //console.log(filterConsidered);
-                        $.each(filterConsidered,function(index, value){
-                            console.log(value);
-                            // match = 0;
-                            // if(value[idx] == val ){
-                            //     match++;
-                            // }
-                               
-
-                            // if (match == filtersConsidered.size) { 
-                            //     filterresults.push(value); 
-                            // } 
-
-                        });
-
-                    $.each(jsonformat, function (index, value){
-                        $('#job').empty();
+                    filterConsidered.forEach( function (idx, val){
+                   
+                            console.log(idx);
                         
-                       
-                      
-
-                        var filterresults = new Array(); 
-                        $.each(filterConsidered, function (idx, val){
-                            //console.log(value[idx] );
-                           
                             if(val == ""){
                                 filterConsidered.delete(idx);
                             }
-                      
+                    
                         }); 
+                        
 
-                      
-                        if (filterresults.length != 0){
-                            $('#Job').append(
-                                '<div id=style>'+ '<ul>'+
-                                '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
-                                '<h4>'    + value['Position Title'] + '</h4>'+'</a>'+"  "+
-                                '<button>'+ value['Campus : Location'] +'</button>'+"  "+
-                                '<button>'+ value["Department/Unit"] +'</button>' +"  "+
-                                '<button>'+ value["Position Type"] +'</button>'+ "  "+
-                                '<button>'+ value["Closing Date"] +'</button>' +"  "+
-                                '<button>'+ value['Campus : Location'] +'</button>'+"  "+
-                                '<button>'+'No of Opening:'+" "+ value['# of Openings'] +'</button>'+"  "+
-                                '<button>'+ value['FLSA Status'] +'</button>'+"  "+
-                                '<button>'+'ID:'+' '+ value['ID'] +'</button>'+"  "+
-                                '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
-            
-                            )
-                        }else{
-                            $('#Job').append('Search does not match.'+'<br>'+'Try Again')
-                        }
-                            
+                    $.each(jsonformat, function (index, value){
+                            $('#job').empty();
+
+                           
+                           
                     });  
             } 
         });
