@@ -191,42 +191,69 @@ function dropdown(){
                     var ref_typi= employmentType;
 
                     var loc_input = document.getElementById('location').value;
-                    var emp_input = document.getElementById('department').value;
-                    var dep_input = document.getElementById('employmentType').value;
+                    var dep_input = document.getElementById('department').value;
+                    var emp_input = document.getElementById('employmentType').value;
                     //console.log(loc_input);
-
-                    $.each(jsonformat, function (index, value){
-                        $('#job').empty();
-
-                         var filterConsidered = new Map(
-                        [
-                            ["Employment Type", loc_input], 
-                            ["Department/Unit", emp_input], 
-                            ["Campus : Location", dep_input]
+                    var filterConsidered = new Map(
+                        [ 
+                            ["Employment Type", emp_input], 
+                            ["Department/Unit", dep_input], 
+                            ["Campus : Location", loc_input]
                         ]
                         
                         );
                         //console.log(filterConsidered);
+                        $.each(filterConsidered,function(index, value){
+                            console.log(value);
+                            // match = 0;
+                            // if(value[idx] == val ){
+                            //     match++;
+                            // }
+                               
+
+                            // if (match == filtersConsidered.size) { 
+                            //     filterresults.push(value); 
+                            // } 
+
+                        });
+
+                    $.each(jsonformat, function (index, value){
+                        $('#job').empty();
+                        
+                       
+                      
 
                         var filterresults = new Array(); 
                         $.each(filterConsidered, function (idx, val){
+                            //console.log(value[idx] );
+                           
                             if(val == ""){
                                 filterConsidered.delete(idx);
                             }
                       
                         }); 
 
-                        $.each(filterConsidered, function (idx, val){
-                            match = 0;
-                            if(idx == val ){
-                                match++;
-                            }
-                            if (match == filtersConsidered.size) { 
-                                filterresults.push(val); 
-                            } 
-                        });
-                            //console.log(val);
-
+                      
+                        if (filterresults.length != 0){
+                            $('#Job').append(
+                                '<div id=style>'+ '<ul>'+
+                                '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
+                                '<h4>'    + value['Position Title'] + '</h4>'+'</a>'+"  "+
+                                '<button>'+ value['Campus : Location'] +'</button>'+"  "+
+                                '<button>'+ value["Department/Unit"] +'</button>' +"  "+
+                                '<button>'+ value["Position Type"] +'</button>'+ "  "+
+                                '<button>'+ value["Closing Date"] +'</button>' +"  "+
+                                '<button>'+ value['Campus : Location'] +'</button>'+"  "+
+                                '<button>'+'No of Opening:'+" "+ value['# of Openings'] +'</button>'+"  "+
+                                '<button>'+ value['FLSA Status'] +'</button>'+"  "+
+                                '<button>'+'ID:'+' '+ value['ID'] +'</button>'+"  "+
+                                '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
+            
+                            )
+                        }else{
+                            $('#Job').append('Search does not match.'+'<br>'+'Try Again')
+                        }
+                            
                     });  
             } 
         });
