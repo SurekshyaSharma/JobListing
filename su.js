@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
     console.log("Here We Go");
@@ -62,7 +61,7 @@ function getUSTjoblisitng() {
                 //object literal
                 //console.log(value.ID);
                 //console.log( value["Job URL (Linked)"]);
-    
+               
                 $('#Job').append(
                     '<div id=style>'+ '<ul>'+
                     '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
@@ -78,7 +77,7 @@ function getUSTjoblisitng() {
                     '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
 
                 )
-
+               
                 //there is URl append if there is not URl create a new url and show
                 if (value['Job URL (Linked)'] !== '') {
                     $('#title').append('<a href="' + value['Job URL (Linked)'] + '" target="_blank">'  + value['Position Title'] +'</a>')
@@ -88,7 +87,7 @@ function getUSTjoblisitng() {
                 }
             });
 
-    /*appending in the top dropdown****************************************************************************************************************************************/
+    /*appending in dropdown****************************************************************************************************************************************/
               
                 $.each(d, function (key, value){
                     //console.log(value);
@@ -130,19 +129,38 @@ function searchFilter(){
         
             var text = document.getElementById("searchInput").value;
             var userInput = text.toLowerCase();
-            
+             var number = 0;
 
             $.each(jsonformat, function (index, value){
-                var valueLowercase =  value['Position Title'].toLowerCase();
+            
+                var locationFix = value['Campus : Location'].split('-');
+                var loc=locationFix .pop()
+                var LocDot = loc.split('.').join("");
+            
+                //console.log(LocDot);
+
+                var lowercasePosiType  =  value['Position Title'].toLowerCase();
+                var lowercaseEmpType =  value['Employment Type'].toLowerCase();
+                var lowercaseLocType =  LocDot.toLowerCase();
+            
+    
                 match = 0;
                 
-                if(valueLowercase.includes(userInput)){
+                if(lowercasePosiType.includes(userInput)){
                     match = 1;
                     
                 }
-
-                if (match ==1){
-
+                if(lowercaseEmpType.includes(userInput)){
+                    match = 1;
+                   
+                }
+                if(lowercaseLocType.includes(userInput)){
+                    match = 1;
+                   
+                }
+                console.log(value['Job URL (Linked)']);
+                if (match ==1 && value['Job URL (Linked)'] != "" ){
+                        //console.log(value['Job URL (Linked)']);
                     $('#Job').append(
                         '<div>'+ '<ul>'+
                         '<a href="' + value['Job URL (Linked)'] + '" target="_blank">' + 
@@ -158,9 +176,15 @@ function searchFilter(){
                         '<button>'+ value['Who May Apply'] +'</button>'+'</ul'
     
                     ) 
+                    number = number+1;
                 }  
-
+                
             });
+
+            if(number==0)
+            {
+                $('#Job').append('Try again')
+            }
             
         }
     });
@@ -207,7 +231,7 @@ function dropdown(){
                         //console.log(filterConsidered);
                     filterConsidered.forEach( function (idx, val){
                    
-                            console.log(idx);
+                           // console.log(idx);
                         
                             if(val == ""){
                                 filterConsidered.delete(idx);
@@ -215,18 +239,12 @@ function dropdown(){
                     
                         }); 
                         
-
-                    $.each(jsonformat, function (index, value){
-                            $('#job').empty();
-
-                           
-                           
-                    });  
             } 
         });
 }     
 
 function clearFilter(){
+    $('#Job').empty();
     
         $.ajax({
             type: "GET",
@@ -238,17 +256,15 @@ function clearFilter(){
                 console.log("Failed ajax call" , error);
             },
             
-            
             success: function(data){
             jsonformat = $.csv.toObjects(data);
-            
-                $('#Job').empty();
+               
                 $('#location').val("");
                 $('#department').val("");
                 $('#employementType').val("");
+                $('#searchInput').val("");
                 getUSTjoblisitng(jsonformat);
 
             }
         });
 }
-
