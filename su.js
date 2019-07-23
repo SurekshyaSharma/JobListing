@@ -108,7 +108,7 @@ function getUSTjoblisitng() {
 /***********************************************************************************************/
 function searchFilter(){
 
-    var csvfile = '/jobsample.csv';
+    var csvfile = './jobsample.csv';
     var jsonformat;
    
     $('#Job').empty();
@@ -193,7 +193,7 @@ function searchFilter(){
 
 function dropdown(){
     $('#job').empty();
-        var csvfile = '/jobsample.csv';
+        var csvfile = './jobsample.csv';
         var jsonformat;
     
         $.ajax({
@@ -248,7 +248,7 @@ function clearFilter(){
     
         $.ajax({
             type: "GET",
-            url: '/jobsample.csv',
+            url: './jobsample.csv',
             dataType: "text",
     
             error: function(error){
