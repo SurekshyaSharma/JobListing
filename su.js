@@ -9,7 +9,7 @@ $(document).ready(function () {
 }); 
 
 function getUSTjoblisitng() {
-    var csvfile = '/jobsample.csv';
+    var csvfile = './jobsample.csv';
     var jsonformat;
    
     $.ajax({
