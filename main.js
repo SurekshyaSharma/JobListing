@@ -2,7 +2,7 @@
 // Global variables                                                                                                    *
 // define global variables that will be use throughout the code                                                        *
 // *********************************************************************************************************************
-var _csvfile = './jobsample.csv';
+var _csvfile = '/jobsample.csv';
 var _JsonData;
 
 // Do some stuff when page hmtl page is launched
